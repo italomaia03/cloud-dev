@@ -8,3 +8,9 @@ CREATE TABLE equipes (
 -- Insira alguns dados iniciais
 INSERT INTO equipes (id_equipe, projeto, status)
 VALUES (1010, 'Projeto 1 ', 'Finalizado');
+
+INSERT INTO equipes (id_equipe, projeto, status)
+VALUES (1020, 'Projeto 2 ', 'Em andamento');
+
+INSERT INTO equipes (id_equipe, projeto, status)
+VALUES (1030, 'Projeto 1 ', 'Não iniciado');
