@@ -6,36 +6,31 @@ from flask_mysqldb import MySQL
 # REFATORAR PARA O NOVO BANCO DE DADOS
 app = Flask(__name__)
 # Rota para listar todos os equipamentos no banco de dados
-@app.route('/equipamentos')
-def lista_equipamentos():
+@app.route('/equipes')
+def lista_equipes():
     conn = pymysql.connect(
         host='root',
         user='root',
         password='root',
         db='database'
     )
-
+    
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM equipmentos")
+    cursor.execute("SELECT * FROM equipes")
     result = cursor.fetchall()
     conn.close()
 
     # Formatar a saída como JSON
-    lista_equipamentos  = []
+    lista_equipes = []
     for row in result:
-        equipmentos = {
-            'id': row[0],
-            'nome': row[1],
-            'descricao': row[2],
-            'manufatura': row[3],
-            'modelo': row[4],
-            'data_aquisicao': row[5].strftime('%Y-%m-%d'),
-            'preco': float(row[6]),
-            'local': row[7]
+        equipes = {
+            'id_equipe': row[0],
+            'projeto': row[1],
+            'status': row[2]
         }
-        lista_equipamentos.append(equipmentos)
+        lista_equipes.append(equipes)
 
-    return jsonify(lista_equipamentos)
+    return jsonify(lista_equipes)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
