@@ -1,17 +1,14 @@
-FROM python:3.8
+FROM python:3.11
 
-# Diretório de trabalho
+EXPOSE 5000
+
 WORKDIR /app
 
-# cópias dos arquivos do diretório atual par o contêiner
-COPY requirements.txt /app
+COPY requirements.txt .
 
-# Instalações dos pacotes especficados em requirements.txt
 RUN pip install -r requirements.txt
 
-COPY app.py /app
+COPY ./app.py .
 
-EXPOSE 80
+CMD [ "python", "app.py" ]
 
-# Execução do app.py quando o contêiner for iniciado
-CMD ["python", "app.py"]
