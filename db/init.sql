@@ -1,4 +1,4 @@
--- Criação da tabela de equipamentos de laboratório de química.
+-- Criação da tabela de equipes do laboratório de química.
 CREATE TABLE equipes (
     id_equipe INT PRIMARY KEY,
     projeto VARCHAR(255) NOT NULL,
