@@ -1,6 +1,6 @@
 -- Crie a tabela de equipamentos de laboratório de química
 CREATE TABLE equipamentos (
-    id INT PRIMARY KEY,
+    id_quipamento INT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT,
     manufatura VARCHAR(255),
