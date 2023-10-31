@@ -1,7 +1,6 @@
 from flask import Flask, json, jsonify
 import pymysql.cursors
-from flask_mysqldb import MySQL
-
+import os
 # REFATORAR PARA O NOVO BANCO DE DADOS
 app = Flask(__name__)
 # Rota para listar todos os equipamentos no banco de dados
