@@ -11,7 +11,7 @@ services:
       - db
     networks:
       - flask-app-network
-
+  db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
