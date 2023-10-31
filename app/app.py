@@ -1,4 +1,4 @@
-from flask import Frask, json, jsonify
+from flask import Flask, json, jsonify
 import pymysql.cursors
 from flask_mysqldb import MySQL
 
