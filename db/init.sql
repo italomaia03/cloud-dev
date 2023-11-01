@@ -7,6 +7,15 @@ CREATE TABLE IF NOT EXISTS equipes (
     status VARCHAR(255)
 );
 
+CREATE TABLE IF NOT EXISTS experimentos (
+    id_experimentos INT PRIMARY KEY AUTO_INCREMENT,
+    nome_do_experimento VARCHAR(255) NOT NULL,
+    projeto VARCHAR(255),
+    laboratorio VARCHAR(255),
+    classificacao_de_risco VARCHAR(255),
+    criacao DATE
+);
+
 CREATE TABLE IF NOT EXISTS lab_technicians (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(15) NOT NULL,
@@ -23,6 +32,15 @@ CREATE TABLE IF NOT EXISTS lab_technicians (
     cep VARCHAR(8) NOT NULL,
     lab_id INT NOT NULL
 );
+-- Exemplo de inserção de dados iniciais
+INSERT INTO experimentos (nome_do_experimento, projeto, laboratorio, classificacao_de_risco, criacao)
+VALUES ('Reacoes Organicas', 'Projeto A', 'Laboratorio 1', 'Alto Risco', '2023-02-10');
+
+INSERT INTO experimentos (nome_do_experimento, projeto, laboratorio, classificacao_de_risco, criacao)
+VALUES ('Analise de Materiais', 'Projeto B', 'Laboratorio 2', 'Baixo Risco', '2023-03-15');
+
+INSERT INTO experimentos (nome_do_experimento, projeto, laboratorio, classificacao_de_risco, criacao)
+VALUES ('Teste de Toxicidade', 'Projeto C', 'Laboratorio 3', 'Medio Risco', '2023-04-20');
 
 INSERT INTO lab_technicians (nome, sobrenome, data_nascimento, telefone, cpf, genero, email, senha, endereco, cidade, estado, cep, lab_id)
 VALUES
@@ -42,3 +60,4 @@ VALUES ('Projeto 2 ', 'Em andamento');
 
 INSERT INTO equipes (projeto, status)
 VALUES ('Projeto 1 ', 'Não iniciado');
+
