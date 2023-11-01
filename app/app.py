@@ -1,8 +1,9 @@
-from flask import Flask, jsonify
+from flask import Flask, json
 import pymysql.cursors
 import os
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 def bd_conn():
     return pymysql.connect(
@@ -10,6 +11,7 @@ def bd_conn():
         password= os.environ.get('DB_PASSWORD'),
         host='db',
         database='scientialab',
+        charset='utf8',
         cursorclass=pymysql.cursors.DictCursor,
     )
 
@@ -26,16 +28,16 @@ def lista_equipes():
     cursor.close()
     bd_conn().close()
 
-    lista_equipes = []
-    for row in result:
-        equipes = {
-            'id_equipe': row[0],
-            'projeto': row[1],
-            'status': row[2]
-        }
-        lista_equipes.append(equipes)
+    # lista_equipes = []
+    # for row in result:
+    #     equipes = {
+    #         'id_equipe': row[0],
+    #         'projeto': row[1],
+    #         'status': row[2]
+    #     }
+    #     lista_equipes.append(equipes)
 
-    return jsonify(lista_equipes)
+    return json.dumps({'Equipes':result}, ensure_ascii=False).encode('utf8')
 
 def get_technicians():
     with bd_conn().cursor() as cursor:
@@ -48,7 +50,7 @@ def get_technicians():
 
 @app.get('/techs')
 def get_lab_techs():
-    return jsonify({"Lab Technicians": get_technicians()})
+    return json.dumps({"Lab Technicians": get_technicians()}, ensure_ascii=False).encode('utf8')
 
 if __name__ == '__main__':
     app_args = {}
