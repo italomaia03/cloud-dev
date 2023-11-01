@@ -1,11 +1,11 @@
-USE database
+USE scientialab;
+SET NAMES utf8mb4;
 -- Criação da tabela de equipes do laboratório de química.
 CREATE TABLE IF NOT EXISTS equipes (
     id_equipe INT PRIMARY KEY AUTO_INCREMENT,
     projeto VARCHAR(255) NOT NULL,
     status VARCHAR(255)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
-AUTO_INCREMENT=1;
+);
 
 CREATE TABLE IF NOT EXISTS lab_technicians (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -22,8 +22,7 @@ CREATE TABLE IF NOT EXISTS lab_technicians (
     estado VARCHAR(50) NOT NULL,
     cep VARCHAR(8) NOT NULL,
     lab_id INT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
-AUTO_INCREMENT=1;
+);
 
 INSERT INTO lab_technicians (nome, sobrenome, data_nascimento, telefone, cpf, genero, email, senha, endereco, cidade, estado, cep, lab_id)
 VALUES
