@@ -28,16 +28,17 @@ def lista_equipes():
     cursor.close()
     bd_conn().close()
 
-    # lista_equipes = []
-    # for row in result:
-    #     equipes = {
-    #         'id_equipe': row[0],
-    #         'projeto': row[1],
-    #         'status': row[2]
-    #     }
-    #     lista_equipes.append(equipes)
-
     return json.dumps({'Equipes':result}, ensure_ascii=False).encode('utf8')
+
+@app.route('/experimentos')
+def lista_experimentos():
+
+    cursor = bd_conn().cursor()
+    cursor.execute("SELECT * FROM experimentos")
+    result = cursor.fetchall()
+    bd_conn().close()
+
+    return json.dumps({"Experimentos": result})
 
 def get_technicians():
     with bd_conn().cursor() as cursor:
