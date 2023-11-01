@@ -7,10 +7,10 @@ app = Flask(__name__)
 @app.route('/equipes')
 def lista_equipes():
     conn = pymysql.connect(
-        host='root',
+        host='db',
         user='root',
         password='root',
-        db='database'
+        database='database'
     )
     
     cursor = conn.cursor()
